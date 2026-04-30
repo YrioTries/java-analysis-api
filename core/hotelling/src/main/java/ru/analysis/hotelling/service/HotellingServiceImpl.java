@@ -8,7 +8,6 @@ import org.apache.commons.math3.linear.RealMatrixFormat;
 import org.apache.commons.math3.stat.correlation.PearsonsCorrelation;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import ru.analysis.hotelling.dto.HotellingRequest;
 
 import java.text.NumberFormat;
@@ -77,12 +76,10 @@ public class HotellingServiceImpl {
         StringBuilder sb = new StringBuilder();
         int rows = matrix.getRowDimension();
         int cols = matrix.getColumnDimension();
-        int width = 15;  // 14 (число) + 1 (│) = 15!
+        int width = 15;
 
-        // Верх рамки
         sb.append("┌").append("─".repeat(width * cols + 1)).append("┐\n");
 
-        // Строки
         for (int i = 0; i < rows; i++) {
             sb.append("│");  // Первый |
             for (int j = 0; j < cols; j++) {
@@ -91,13 +88,11 @@ public class HotellingServiceImpl {
             }
             sb.append("\n");
 
-            // Разделитель
             if (i < rows - 1) {
                 sb.append("├").append("─".repeat(width * cols + 1)).append("┤\n");
             }
         }
 
-        // Низ рамки
         sb.append("└").append("─".repeat(width * cols + 1)).append("┘\n");
 
         return sb.toString();
