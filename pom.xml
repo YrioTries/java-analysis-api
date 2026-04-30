@@ -21,6 +21,7 @@
         <module>core</module>
         <module>infra</module>
         <module>interaction-api</module>
+        <module>core/hotelling</module>
     </modules>
 
     <properties>
