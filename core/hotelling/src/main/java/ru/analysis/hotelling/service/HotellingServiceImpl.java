@@ -58,20 +58,6 @@ public class HotellingServiceImpl {
         return pearsonsCorrelation.getCorrelationMatrix();
     }
 
-    private String prettyMatrix(RealMatrix matrix) {
-        // NumberFormat с точкой и 2 знаками
-        NumberFormat nf = NumberFormat.getNumberInstance(Locale.ENGLISH);
-        nf.setGroupingUsed(false);  // Без запятых тысяч
-        nf.setMaximumFractionDigits(3);
-
-        // MatrixFormat
-        RealMatrixFormat fmt = new RealMatrixFormat("  ", "", "", "", " \n ", "|", nf);
-
-        return String.format("Matrix [%dx%d]:\n%s",
-                matrix.getRowDimension(), matrix.getColumnDimension(),
-                fmt.format(matrix));
-    }
-
     private String tableMatrix(RealMatrix matrix) {
         StringBuilder sb = new StringBuilder();
         int rows = matrix.getRowDimension();
