@@ -136,7 +136,6 @@ class HotellingServiceImplTest {
 
     @Test
     void getHotellingModel_shouldCreateMatrixAndComputeCorrelation() {
-        System.setProperty("logging.level.ru.analysis.hotelling", "DEBUG");
         HotellingRequest request = createTestRequest();
 
         service.getHotellingModel(request);
