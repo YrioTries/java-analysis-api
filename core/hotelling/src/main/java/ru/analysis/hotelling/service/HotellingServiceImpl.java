@@ -2,10 +2,8 @@ package ru.analysis.hotelling.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.math3.linear.Array2DRowRealMatrix;
 import org.apache.commons.math3.linear.MatrixUtils;
 import org.apache.commons.math3.linear.RealMatrix;
-import org.apache.commons.math3.stat.correlation.PearsonsCorrelation;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.analysis.hotelling.dto.HotellingRequest;
@@ -77,15 +75,6 @@ public class HotellingServiceImpl {
         double scaleFactor = Math.sqrt(maxBetta / sumSquaresU);
 
         return U.scalarMultiply(scaleFactor);
-    }
-
-    protected double sumSquares(RealMatrix vector) {
-        return IntStream.range(0, vector.getRowDimension())
-                .mapToDouble(i -> {
-                    double x = vector.getEntry(i, 0);
-                    return x * x;
-                })
-                .sum();
     }
 
     protected RealMatrix divideVector(RealMatrix vector, double divisor) {
@@ -235,6 +224,4 @@ public class HotellingServiceImpl {
 
         return sb.toString();
     }
-
-
 }
